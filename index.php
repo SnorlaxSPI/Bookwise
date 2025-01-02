@@ -46,6 +46,36 @@
 
     </form>
 
+    <section class="space-y-4">
+
+      <!-- Livro -->
+
+      <div class="w-1/3 p-2 rounded border-stone-800 border-2 bg-stone-900">
+
+        <div class="flex">
+
+          <div class="w-1/3">imagem</div>
+
+          <div>
+
+            <div class="font-semibold">Título</div>
+            <div class="text-xs italic">Autor</div>
+            <div class="text-xs italic">⭐️⭐️⭐️⭐️⭐️ (3 Avaliações)</div>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          Descrição
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
 </body>
