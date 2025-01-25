@@ -6,6 +6,17 @@ class DB
   {
     $db = new PDO('sqlite:database.sqlite');
     $query = $db->query('SELECT * FROM livros');
-    return $query->fetchAll();
+    $items = $query->fetchAll();
+    $retorno = [];
+
+    foreach ($items as $item) {
+      $livro = new Livro();
+      $livro->id = $item['id'];
+      $livro->titulo = $item['titulo'];
+      $livro->autor = $item['autor'];
+      $livro->descricao = $item['descricao'];
+      $retorno[] = $livro;
+    }
+    return $retorno;
   }
 }
