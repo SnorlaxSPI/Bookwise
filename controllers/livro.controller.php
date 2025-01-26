@@ -1,12 +1,9 @@
 <?php
 
-require 'dados.php';
-
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 'Não informado';
 
-$filtrado = array_values(array_filter($livros, fn($livro) => $livro['id'] == $id));
+$db = new DB;
 
-$livro = array_pop($filtrado);
+$livro = $db->livro($id);
 
 view('livro', compact('livro'));
-

@@ -1,7 +1,5 @@
 <?php
 
-$DB = new DB();
-
-$livros = $DB->Livros();
+$livros = (new DB)->livros();
 
 view('index', compact('livros'));
