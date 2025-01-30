@@ -9,10 +9,15 @@ class DB
     $this->db = new PDO('sqlite:database.sqlite');
   }
 
-  public function livros()
+  public function livros($pesquisa = '')
   {
-    $query = $this->db->query('SELECT * FROM livros');
-    $items = $query->fetchAll();
+    //$sql = "SELECT * FROM livros where titulo like '%$pesquisa%' or autor like '%$pesquisa%' or descricao like '%$pesquisa%'";
+    //$query = $this->db->query($sql);
+    $prepare = $this->db->prepare("SELECT * FROM livros WHERE usuario_id = 1 and titulo like :pesquisa");
+    $prepare->bindValue(':pesquisa', "%$pesquisa%");
+    $prepare->execute();
+
+    $items = $prepare->fetchAll();
 
     return array_map(fn($item) => Livro::make($item), $items);
   }
